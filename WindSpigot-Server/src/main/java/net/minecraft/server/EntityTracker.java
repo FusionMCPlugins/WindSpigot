@@ -145,7 +145,7 @@ public class EntityTracker {
 		for (EntityTrackerEntry entry : c) {
 			entry.update();
 		}
-		for (EntityPlayer player : MinecraftServer.getServer().getPlayerList().players) {//TODO remove
+		for (EntityPlayer player : MinecraftServer.getServer().getPlayerList().players) {//TODO (modificato da me) removed in last version
 			player.playerConnection.sendQueuedPackets();
 		}
 	}

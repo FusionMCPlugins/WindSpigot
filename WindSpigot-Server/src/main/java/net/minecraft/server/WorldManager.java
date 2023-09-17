@@ -127,13 +127,22 @@ public class WorldManager implements IWorldAccess {
 					continue;
 				}
 				// CraftBukkit end
+				//FusionSpigot start
+				double d0 = (double) blockposition.getX() - entityplayer.locX;
+				double d1 = (double) blockposition.getY() - entityplayer.locY;
+				double d2 = (double) blockposition.getZ() - entityplayer.locZ;
 
+				if (d0 * d0 + d1 * d1 + d2 * d2 >= 32.0d) continue;
+				entityplayer.playerConnection.sendPacket(new PacketPlayOutBlockBreakAnimation(i, blockposition, j));
+				//FusionSpigot end
+
+				/*Removed WindSpigot
 				if (packet == null) {
 					packet = new PacketPlayOutBlockBreakAnimation(i, blockposition, j);
 				}
-				// entityplayer.playerConnection.sendPacket(packet);
+				 //entityplayer.playerConnection.sendPacket(packet); (comment already in WindSpigot)
 				this.world.playerMap.sendPacketNearby(entityplayer, blockposition.getX(), blockposition.getY(),
-						blockposition.getZ(), 32.0D, new PacketPlayOutBlockBreakAnimation(i, blockposition, j), false);
+						blockposition.getZ(), 32.0D, new PacketPlayOutBlockBreakAnimation(i, blockposition, j), false);*/
 			}
 		}
 
